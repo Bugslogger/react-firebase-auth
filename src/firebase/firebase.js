@@ -3,12 +3,14 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   GoogleAuthProvider,
-  signInWithPopup
+  signInWithPopup,
+  GithubAuthProvider
 } from "firebase/auth";
 import { app } from "./init";
 
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider(); // google authentication
+const gihtubProvider = new GithubAuthProvider(); // github authentication
 
 /**
  * `createUserWithEmailAndPassword()` method from firebase auth is used to create new user
@@ -79,4 +81,16 @@ export const GoogleAuth = async () => {
   //   const credential = GoogleAuthProvider.credentialFromError(error);
   //   // ...
   // });
+}
+
+export const GithubAuth = async () => {
+  /**
+   * auth and gihtubProvider is declared at the top of this file.
+   * 
+   * here we are not handaling any errors.
+   * As we are not handling errors here
+   * it says user is alredy exists with this email address but using different provider.
+   */
+  const userAuth = await signInWithPopup(auth, gihtubProvider);
+  return userAuth;
 }

@@ -1,0 +1,26 @@
+.loginpage {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(233, 233, 233);
+}
+
+.loginpage > div > div {
+  border: 6px solid transparent;
+  margin: 15px 0;
+  height: 70px;
+  width: 180px;
+  cursor: pointer;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2),
+    -10px -10px 20px rgba(255, 255, 255, 0.7);
+}
+
+.loginpage > div > div > div {
+  width: 100%;
+  height: 100%;
+  font-size: 18px;
+}
+.loginpage > div > div > div:active {
+  font-size: 16px;
+  box-shadow: inset 10px 10px 20px rgba(0, 0, 0, 0.2),
+    inset -10px -10px 20px rgba(255, 255, 255, 0.7);
+}

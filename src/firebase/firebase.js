@@ -4,13 +4,15 @@ import {
   signInWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithPopup,
-  GithubAuthProvider
+  GithubAuthProvider,
+  FacebookAuthProvider
 } from "firebase/auth";
 import { app } from "./init";
 
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider(); // google authentication
 const gihtubProvider = new GithubAuthProvider(); // github authentication
+const fbAuthProvider = new FacebookAuthProvider(); // facebook authentication
 
 /**
  * `createUserWithEmailAndPassword()` method from firebase auth is used to create new user
@@ -93,4 +95,14 @@ export const GithubAuth = async () => {
    */
   const userAuth = await signInWithPopup(auth, gihtubProvider);
   return userAuth;
+}
+
+
+export const FacebookAuth = async () => {
+  try {
+    const fbAuth = signInWithPopup(auth, fbAuthProvider);
+    return fbAuth;
+  } catch (error) {
+    console.log(error);
+  }
 }

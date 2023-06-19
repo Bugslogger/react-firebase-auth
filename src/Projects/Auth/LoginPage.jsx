@@ -1,6 +1,6 @@
 import React from "react";
 import "./style.css";
-import { GithubAuth, GoogleAuth } from "../../firebase/firebase";
+import { FacebookAuth, GithubAuth, GoogleAuth } from "../../firebase/firebase";
 
 const LoginPage = () => {
   async function OnButtonClick() {
@@ -12,6 +12,11 @@ const LoginPage = () => {
   async function GithubLogIn() {
     const user = await GithubAuth();
     console.log("github user: ", user);
+  }
+
+  async function FacebookAuthButtonClicked() {
+    const user = await FacebookAuth();
+    console.log("facebook user: ", user);
   }
 
   return (
@@ -26,6 +31,13 @@ const LoginPage = () => {
         <div className="fw-bold text-center rounded">
           <div className="py-3 rounded" onClick={GithubLogIn}>
             Github
+          </div>
+        </div>
+
+        {/* facebook login */}
+        <div className="fw-bold text-center rounded">
+          <div className="py-3 rounded" onClick={FacebookAuthButtonClicked}>
+            Facebook
           </div>
         </div>
       </div>
